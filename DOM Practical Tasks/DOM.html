@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <h1>Task 1: </h1>
+        <h2 class="task">DOM Structure Analysis</h2>
+        <div>submit date: 24/3/2026</div>
+    </div>
+
+    <div class="list">
+  <ul>
+    <li>Item 1</li>
+    <li>Task3</li> 
+    <li>Item 3</li>
+  </ul>
+</div>
+
+<p id="parag">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam provident officiis quo at aut maiores nam perferendis, rem, aspernatur id atque consectetur dolores iusto unde recusandae sint cupiditate repudiandae necessitatibus?</p>
+    <script>
+//🟢 Task 1 — DOM Structure Analysis
+        let parent=document.getElementsByClassName("parent")[0];
+        let task=document.getElementsByClassName("task")[0];
+        console.log(parent.children);
+        console.log(parent.firstElementChild);
+        console.log(parent.lastElementChild);
+        console.log(task.previousElementSibling);
+        console.log(task.nextElementSibling);
+
+//🟢 Task 2 — Dynamic Content Builder
+const card=document.createElement("div");
+const title=document.createElement("h1");
+title.textContent="Task 2";
+const disc=document.createElement("p");
+disc.textContent="The HTML DOM (HTML Document Object Model) is an Object Model for HTML Documents.";
+const picture=document.createElement("img");
+picture.setAttribute("src","../images/dom.png");
+picture.setAttribute("width","350");
+document.write("<hr>")
+card.appendChild(title);
+card.appendChild(disc);
+card.appendChild(picture);
+document.body.appendChild(card);
+document.write("<hr>")
+
+//🟢 Task 3 — DOM Traversing Challenge
+let list =document.getElementsByClassName("list")[0];
+let ul=list.children[0];
+let li=ul.children[1];
+//firstLi=ul.firstElementChild;
+//let secondLi = firstLi.nextElementSibling;
+console.log(li);
+document.body.appendChild(li);
+document.write("<hr>")
+
+//🟢 Task 4 — Replace & Update
+let old=document.getElementById("parag");
+old.textContent="update the old paragraph";
+let new1=document.createElement("h5");
+new1.textContent="Task 4";
+new1.classList.add("new_parag");
+old.replaceWith(new1);
+
+document.body.appendChild(new1);
+
+    </script>
+</body>
+</html>
