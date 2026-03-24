@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+    <button class="btn">submit</button>
+    <script>
+        let button=document.getElementsByClassName("btn")[0];
+        button.addEventListener("click",()=>{
+            button.classList.toggle("active");
+            if(button.classList.contains("active")){
+            button.textContent="submited successfully";
+            }else{
+                button.textContent="submit!!";
+            }
+        });
+    </script>
+</body>
+</html>
