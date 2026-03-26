@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+</head>
+<body>
+    <h1 style="background-color: gray;"> what is lorem?</h1>
+    <button class="btn">Show</button>
+    <p class="text" style="display: none;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus pariatur saepe necessitatibus consectetur vitae, exercitationem, cupiditate assumenda, placeat earum culpa voluptatum. Distinctio itaque repellat impedit obcaecati aperiam reprehenderit sit officiis?</p>
+    <button class="btn2" style="display: none;">Hide</button>
+
+    <h1 style="background-color: gray;"> what is DOM?</h1>
+    <button class="btn">Show</button>
+    <p class="text" style="display: none;">The Document Object Model (DOM) is a programming interface for HTML and XML documents, representing the page as a tree of objects that JavaScript can access and manipulate<p>
+    <button class="btn2" style="display: none;">Hide</button>
+
+
+
+<script>
+    let parag=document.querySelectorAll(".text");
+    let show=document.querySelectorAll(".btn");
+    let hide=document.querySelectorAll(".btn2");
+
+    show.forEach((btn,i)=>{
+        btn.addEventListener("click",()=>{
+        parag[i].style.display="block";
+        hide[i].style.display="block";
+        btn.style.display="none";
+    });
+});
+    hide.forEach((btn,i)=>{
+        btn.addEventListener("click",()=>{
+        parag[i].style.display="none";
+        btn.style.display="none";
+        show[i].style.display="block";
+    });
+});
+</script>
+
+</body>
+</html>

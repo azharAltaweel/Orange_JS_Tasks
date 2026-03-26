@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <select id="countries">
+        <option value="">select country</option>
+        <option value="jd">Jordan</option>
+        <option value="pal">palestine</option>
+        <option value="turk">Turkey</option>
+    </select><br><br>
+    <img id="flag" width="250" height="250" style="display:none;">
+    <br>
+    <script>
+        let countries=document.getElementById("countries");
+        let img=document.getElementById("flag");
+        countries.addEventListener("change",(e)=>{
+            let country=e.target.value;
+            if(country===""){
+                img.style.display="none";
+                return;
+            }
+            img.setAttribute("src",`Images/${country}.png`);
+            img.setAttribute("alt", `${country} flag`);
+            img.style.display="block";
+        console.log(country);
+
+        });
+        </script>
+
+</body>
+</body>
+</html>

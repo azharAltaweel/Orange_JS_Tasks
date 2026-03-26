@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+</head>
+<style>
+    .box{
+  padding: 05px;
+  margin: 10px;
+  border: 1px solid #000;
+  }
+
+</style>
+<body>
+    <div class="editor">
+    <select id="type">
+        <option value="">font type</option>
+        <option value="Courier New" >Courier New</option>
+        <option value="Arial">Arial</option>
+        <option value="Gill Sans">Gill Sans</option>
+    </select>
+    <select id="size">
+        <option value="">Font Size</option>
+        <option value="12px">12px</option>
+        <option value="16px">16px</option>
+        <option value="20px">20px</option>
+        <option value="24px">24px</option>
+        <option value="30px">30px</option>
+    </select>
+    <input type="checkbox" id="italic">
+    <label> Italic</label>
+    <input type="checkbox" id="bold">
+    <label> Bold</label>
+    <input type="checkbox" id="underline">
+    <label> Underline</label>
+    </div>
+    <div class="box">
+        <p id="parag">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, cupiditate quisquam. Quidem tempore sapiente a eum dolore pariatur perferendis commodi corrupti quos. Cumque alias dolorem ad iste ratione! Dolores, voluptate.</p>
+    </div>
+
+<script>
+    let type=document.getElementById("type");
+    let size=document.getElementById("size");
+    let italic=document.getElementById("italic");
+    let bold=document.getElementById("bold");
+    let underline=document.getElementById("underline");
+    let text=document.getElementById("parag");
+
+    type.addEventListener("change",(e)=>{
+        text.style.fontFamily=e.target.value;
+    });
+    size.addEventListener("change",(e)=>{
+        text.style.fontSize=e.target.value;
+    });
+    bold.addEventListener("change",(e)=>{
+        if(e.target.checked)
+        text.style.fontWeight="bold";
+    else       
+      text.style.fontWeight="normal";
+    });
+        italic.addEventListener("change",(e)=>{
+        if(e.target.checked)
+        text.style.fontStyle="italic";
+    else       
+      text.style.fontWeight="normal";
+    });  
+      underline.addEventListener("change",(e)=>{
+        if(e.target.checked)
+        text.style.textDecoration="underline";
+    else       
+      text.style.textDecoration="none";
+    });
+
+</script>
+
+    
+</body>
+</html>
