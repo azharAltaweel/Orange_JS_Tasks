@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+</head>
+<body>
+    <input type="text" id="input" placeholder="add item" >
+    <button class="btn">add</button>
+    <ul class="ul"></ul>
+
+    <script>
+        let input=document.getElementById("input");
+        const btn=document.getElementsByClassName("btn")[0];
+        const ul=document.getElementsByClassName("ul")[0];
+        btn.addEventListener("click",()=>{
+            let item=input.value;
+            if (item === "") return;
+            const li = document.createElement("li");
+            li.innerHTML = `${item} <button class="delete">Delete</button>`;
+            ul.appendChild(li);
+        });
+        ul.addEventListener("click",(e)=>{
+            if(e.target.classList.contains("delete")){
+                 e.target.parentElement.remove();
+                }}
+                    );
+    </script>
+</body>
+</html>
