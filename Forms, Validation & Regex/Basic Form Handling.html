@@ -6,6 +6,39 @@
     <title>Task 1</title>
 </head>
 <body>
-    
+    <h1>Basic Info Form</h1>
+    <form id="form">
+        <label>First Name:  </label>
+        <input type="text" id="fname" placeholder="Enter your first name" ><br><br>
+        <label>Last Name:  </label>
+        <input type="text" id="lname" placeholder="Enter your last name" ><br><br>
+        <label>Email:  </label>
+        <input type="email" id="email" placeholder="Email" ><br><br>
+        <button type="submit" id="btn">Submit</button>
+<hr>
+<h5>Submitted Data: </h5>
+<div id="output"></div>
+<script>
+    let form=document.getElementById("form");
+    form.addEventListener("submit",function(e){
+e.preventDefault();
+let fname=document.getElementById("fname").value;
+let lname=document.getElementById("lname").value;
+let email=document.getElementById("email").value;
+let output=document.getElementById("output");
+let data1 = document.createElement("p");
+    data1.textContent = "First Name:  " + fname;
+let data2 = document.createElement("p");
+    data2.textContent = "Last Name:  " + lname;
+let data3 = document.createElement("p");
+    data3.textContent = "Email:  " + email;
+output.appendChild(data1);
+output.appendChild(data2);
+output.appendChild(data3);
+
+});
+
+</script>
+    </form>
 </body>
 </html>

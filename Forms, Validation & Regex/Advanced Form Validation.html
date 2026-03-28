@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+</head>
+<body>
+    <h1> Registration Form</h1>
+    <form id="form">
+        <label>Username:</label><br>
+        <input type="text" id="fname" placeholder="First Name"><br>
+        <small id="fname_error" style="color:red;"></small><br>
+        <input type="text" id="lname" placeholder="Last Name"><br>
+        <small id="lname_error" style="color:red;"></small>
+       <br><br> <label>Date Of Birth</label><br>
+        <input type="date" id="date" placeholder="Birth Day"><br>
+        <small id="date_error" style="color:red;"></small>
+        <br><br><label>Email: </label><br>
+        <input type="email" id="email" placeholder="Email"><br>
+        <small id="email_error" style="color:red;"></small><br>
+        <input type="email" id="email2" placeholder=" Confirm Email"><br>
+        <small id="email2_error" style="color:red;"></small>
+        <br><br><label>password</label><br>
+        <input type="password" id="pas" placeholder="Password "><br>
+        <small id="pas_error" style="color:red;"></small><br>
+        <input type="password" id="pas2" placeholder=" Confirm Password "><br>
+        <small id="pas2_error" style="color:red;"></small>
+<br><br><button type="submit" id="btn">Register</button>
+    </form>
+    <script>
+        let form=document.getElementById("form");
+        form.addEventListener("submit",function(e){
+e.preventDefault();
+let fname=document.getElementById("fname").value.trim();
+let lname=document.getElementById("lname").value.trim();
+let date=document.getElementById("date").value.trim();
+let email=document.getElementById("email").value.trim();
+let email2=document.getElementById("email2").value.trim();
+let pas=document.getElementById("pas").value.trim();
+let pas2=document.getElementById("pas2").value.trim();
+
+ let fname_error = document.getElementById("fname_error");
+let lname_error = document.getElementById("lname_error");
+ let date_error = document.getElementById("date_error");
+ let email_error = document.getElementById("email_error");
+  let email2_error = document.getElementById("email2_error");
+ let pas_error = document.getElementById("pas_error");
+ let pas2_error = document.getElementById("pas2_error");
+
+fname_error.textContent="";
+lname_error.textContent="";
+date_error.textContent="";
+email_error.textContent="";
+email2_error.textContent="";
+pas_error.textContent="";
+pas2_error.textContent="";
+
+ let isValid = true;
+
+let usernameRegex=/^[A-Za-z]+$/;
+let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+let passwordRegex = /^(?=.*\d.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,32}$/;
+ 
+     if(fname===""){
+        fname_error.textContent=" first name is empty ";
+        isValid=false;
+    }else if(!usernameRegex .test(fname)){
+        fname_error.textContent=" first name must contains letters only ";
+        isValid=false;       
+    }
+    if(lname===""){
+        lname_error.textContent=" last name is empty ";
+        isValid=false;
+    }else if(!usernameRegex .test(lname)){
+        lname_error.textContent=" last name must contains letters only ";
+        isValid=false;       
+    }
+
+    if(date===""){
+        date_error.textContent="birth date is empty";
+        isValid = false;
+    }
+
+     if (email === "") {
+        email_error.textContent = "Email is empty";
+        isValid = false;
+    } else if (!emailRegex.test(email)) {
+        email_error.textContent = "Invalid email format";
+        isValid = false;
+    }
+      if (email2 === "") {
+        email2_error.textContent = "Please confirm your email";
+        isValid = false;
+    } else if (email !== email2) {
+        email2_error.textContent = "Emails do not match";
+        isValid = false;
+    }
+
+        if (pas === "") {
+        pas_error.textContent = "Password is required";
+        isValid = false;
+    } else if (!passwordRegex.test(pas)) {
+        pas_error.textContent =
+        "Must start with capital, include 2 numbers, 1 special char, 8-32 length";
+        isValid = false;
+    }
+        if (pas2 === "") {
+        pas2_error.textContent = "Please confirm password";
+        isValid = false;
+    } else if (pas !== pas2) {
+        pas2_error.textContent = "Passwords do not match";
+        isValid = false;
+    }
+    if (isValid) {
+        alert("Registration Successful ");
+    }
+
+        });
+    </script>
+</body>
+</html>
