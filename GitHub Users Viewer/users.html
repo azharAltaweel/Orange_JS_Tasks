@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Users Viewer</title>
+</head>
+<style>
+#container{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+gap: 20px;
+padding: 20px;
+}
+.card{
+background-color: rgba(0, 228, 220, 0.337);
+border: 1px solid rgba(255, 255, 255, 0.407);
+border-radius: 10px;
+width: 180px;
+padding: 15px;
+margin: 10px;
+text-align:center;
+}
+.card:hover {
+transform: scale(1.05);
+}
+img{
+width: 100px;
+border-radius: 50%;
+}
+a {
+  display: block;
+  margin-top: 10px;
+  color: blue;
+}
+.loading{
+    background-color: black;
+    color: white;
+    border: 1px solid white ;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+}
+</style>
+<body>
+    <span id="loading" class="loading"> Loading Users...</span>
+    <hr class="line">
+    <div id="container"></div>
+    <script>
+        let load=document.getElementById("loading");
+        let container=document.getElementById("container");
+        let line=document.getElementsByClassName("line")[0];
+        fetch("https://api.github.com/users")
+        .then(response=>response.json())
+        .then(users=>{
+            load.style.display = "none";
+            line.style.display = "none";
+            container.innerHTML = "";
+
+                users.slice(0, 10).forEach(user => {
+                    const card=document.createElement("div");
+                    card.classList.add("card");
+
+                     const img = document.createElement("img");
+                     img.src = user.avatar_url;
+                     img.alt = user.login;
+
+                     const name = document.createElement("h3");
+                     name.textContent = user.login;
+
+                     const link = document.createElement("a");
+                     link.href = user.html_url;
+                     link.textContent = "View Profile";
+                     link.target = "_blank";
+
+                     card.appendChild(img);
+                     card.appendChild(name);
+                     card.appendChild(link);       
+                     
+                    container.appendChild(card);   
+                });
+        })
+        .catch(error=>{
+                console.log("Error:", error);
+                load.textContent = "Failed to load users!";
+
+        });
+    </script>
+</body>
+</html>
