@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+    <input type="text" placeholder="Username" id="name">
+    <button type="submit" id="btn">Save name</button>
+    <div id="data"></div>
+    <script>
+        let btn=document.getElementById("btn");
+        let data=document.getElementById("data");
+
+        window.onload=function(){
+            let saved=localStorage.getItem("username");
+            if(saved){
+                data.textContent="username: "+saved;
+            }
+        };
+        
+        btn.addEventListener("click",()=>{
+        let name=document.getElementById("name").value;
+            localStorage.setItem("username",name);
+            data.textContent="username: " + name;
+        });
+
+    </script>
+</body>
+</html>

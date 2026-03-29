@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" placeholder="Name" id="name">
+        <input type="email" placeholder="Email" id="email">
+        <button id="btn"> Save</button>
+    </form>
+        <p id="data1"></p>
+        <p id="data2"></p>
+
+        
+        <script>
+        let name=document.getElementById("name");
+        let email=document.getElementById("email");
+        let btn=document.getElementById("btn");
+        let data1=document.getElementById("data1");
+        let data2=document.getElementById("data2");
+
+        window.onload=function(){
+            let saved=localStorage.getItem("user");
+            if(saved){
+                let output=JSON.parse(saved);
+                data1.textContent="Name: "+output.Username;
+                data2.textContent="Email: "+output.Email;
+                    }};
+
+        btn.addEventListener("click",(e)=>{
+            e.preventDefault();
+        let user={Username: name.value, Email: email.value};
+        localStorage.setItem("user",JSON.stringify(user));
+        data1.textContent="Name: "+user.Username;
+        data2.textContent="Email: "+user.Email;
+        });
+        </script>
+</body>
+</html>
