@@ -4,11 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task 3</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+<style>
+    .title{
+       text-align: center; 
+    }
+    #input {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+#input:focus {
+    border-color: #007bff;
+}
+#results {
+    width: 100%;
+    margin: auto;
+}
+#results div {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+#results i {
+    margin-right: 10px;
+    color: rgb(36, 197, 214);
+}
+</style>
 <body>
+    <h1 class="title">User Search</h1>
+    <input type="search" id="input" placeholder="Search">
+    <p class>Results:</p><hr>
+    <div id="results"></div>
+
     <script>
-        const users=[  { name:"Ahmad" },{ name:"Ali" },{ name:"Sara" },{ name:"Lana" }];
-        localStorage.setItem(users);
+        let input=document.getElementById("input");
+        let results=document.getElementById("results");
+
+        const users=[{ name:"Leen" },{ name:"Batool" },{ name:"Sajeda" },{ name:"Khaled" }];
+        localStorage.setItem("users",JSON.stringify(users));
+        localUsers=JSON.parse(localStorage.getItem("users"));
+
+        function searchName(value){
+            results.innerHTML = "";
+           localUsers.forEach(user => {
+            if(user.name.toLowerCase().includes(value)){
+                let result=document.createElement("div");
+                result.innerHTML=`<i class="fa-solid fa-user"></i><strong> ${user.name}</strong>`;
+                // let btn=document.createElement("button");
+                // btn.style.background="red";
+                // btn.textContent="Delete";
+                // btn.addEventListener("click",()=>{
+
+                // })
+                // result.appendChild(btn);
+
+                results.appendChild(result);
+            }
+           });
+            if(results.innerHTML===""){
+            results.textContent="No Results Found";
+         }
+        }
+//وانا ابحث يطلعلي النتيجة وهي تعتبر الlast
+        input.addEventListener("input",()=>{
+           let value=input.value.toLowerCase();
+           searchName(value);
+           localStorage.setItem("lastResult",value);
+        });
+//عشان حتى لو عملت ريفريش تضل النتيجة نفسها
+        let last=localStorage.getItem("lastResult");
+        if(last){
+            input.value=last;
+            searchName(last);
+        }
+
+
+
+
     </script>
 </body>
 </html>
